@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cobay4sn23xna"]
+[gd_scene load_steps=13 format=3 uid="uid://cobay4sn23xna"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_41s6o"]
 [ext_resource type="Texture2D" uid="uid://d2ygdy7uq22xg" path="res://assets/Player.png" id="1_d8loh"]
@@ -9,9 +9,11 @@
 [ext_resource type="Script" path="res://scripts/states/player/player_jump.gd" id="7_reovx"]
 [ext_resource type="Script" path="res://scripts/states/player/player_move.gd" id="8_5xcnl"]
 [ext_resource type="Script" path="res://scripts/states/player/player_on_wall.gd" id="9_lo61q"]
+[ext_resource type="Script" path="res://scripts/states/player/player_dash.gd" id="10_atjmb"]
+[ext_resource type="Script" path="res://scripts/states/player/player_attack.gd" id="11_d68oh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqlln"]
-size = Vector2(9, 30)
+size = Vector2(10, 30)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 9
@@ -22,8 +24,20 @@ position = Vector2(0, -16)
 texture = ExtResource("1_d8loh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -15)
+position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_dqlln")
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -15)
+target_position = Vector2(-8, 0)
+collision_mask = 9
+
+[node name="RayRight" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -15)
+target_position = Vector2(8, 0)
+collision_mask = 9
 
 [node name="ColorShiftComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_64f68")]
 sprite = NodePath("../Sprite2D")
@@ -48,3 +62,9 @@ script = ExtResource("8_5xcnl")
 
 [node name="PlayerOnWall" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("9_lo61q")
+
+[node name="PlayerDash" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("10_atjmb")
+
+[node name="PlayerAttack" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("11_d68oh")

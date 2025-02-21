@@ -3,16 +3,34 @@ extends State
 
 var _player: Player
 
-enum Type { NONE, IDLE, MOVE, JUMP, FALL, ON_WALL, DEAD }
+enum Type { NONE, IDLE, MOVE, JUMP, FALL, ON_WALL, DASH, ATTACK, DEAD }
 
 func enter(previousState: State) -> void:
 	super.enter(previousState)
 
-func input(event: InputEvent) -> void:
+func input(_event: InputEvent) -> void:
 	pass
 	
 func get_type() -> Type:
 	return Type.NONE
 
+func get_gravity_y() -> float:
+	return self._player.get_gravity().y
+	
 func set_player(player: Player) -> void:
 	self._player = player
+	
+func get_player_velocity() -> Vector2:
+	return self._player.velocity
+	
+func get_player_velocity_x() -> float:
+	return self._player.velocity.x
+	
+func set_player_velocity_x(v: float) -> void:
+	self._player.velocity.x = v
+	
+func get_player_velocity_y() -> float:
+	return self._player.velocity.y
+	
+func set_player_velocity_y(v: float) -> void:
+	self._player.velocity.y = v

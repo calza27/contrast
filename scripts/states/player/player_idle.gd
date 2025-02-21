@@ -1,7 +1,7 @@
 class_name PlayerIdle
 extends PlayerState
 
-const DECCELERATION = 0.25
+const DECCELERATION = 0.5
 
 func enter(previousState: State) -> void:
 	super.enter(previousState)
@@ -20,11 +20,11 @@ func physics_update(_delta: float) -> void:
 		return
 		
 	var rate = self._player.SPEED * DECCELERATION
-	self._player.velocity.x = move_toward(self._player.velocity.x, 0, rate)
+	self.set_player_velocity_x(move_toward(self.get_player_velocity_x(), 0, rate))
 
 func input(event: InputEvent) -> void:
-	#if event.is_action_pressed("attack"):
-		#self.transition.emit(self, Type.ATTACK)
+	if event.is_action_pressed("attack"):
+		self.transition.emit(self, Type.ATTACK)
 	pass
 	
 func get_type() -> Type:
