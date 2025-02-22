@@ -8,9 +8,12 @@ func enter(previousState: State) -> void:
 	super.enter(previousState)
 	self.timer = DASH_TIME
 	self.set_player_velocity_y(0)
-	var speed: float = self._player.DASH_SPEED
-	if self.get_player_velocity_x() < 0:
-		speed *= -1
+	var speed: float = self._player.SPEED * self._player.DASH_MULTI
+	var direction: float = Input.get_axis("move_left", "move_right")
+	if direction == 0:
+		speed *= self.get_player_direction_x()
+	else:
+		speed *= direction
 	self.set_player_velocity_x(speed)
 	
 func exit() -> void:

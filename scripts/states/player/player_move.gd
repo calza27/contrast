@@ -1,7 +1,7 @@
 class_name PlayerMove
 extends PlayerState
 
-const ACCELERATION: float = 1.0
+const ACCELERATION: float = 3.0
 const TURN_RATE: float = 5.0
 
 func enter(previousState: State) -> void:
@@ -18,10 +18,7 @@ func physics_update(delta: float) -> void:
 		return
 		
 	var rate = self._player.SPEED * self.ACCELERATION * delta
-	var curr_direction: float = 0
-	if self.get_player_velocity_x() != 0:
-		curr_direction = self.get_player_velocity_x() / abs(self.get_player_velocity_x())
-	if curr_direction == input_direction * -1:
+	if self.get_player_direction_x() == input_direction * -1:
 		rate *= self.TURN_RATE
 		
 	var target_speed = self._player.SPEED * input_direction

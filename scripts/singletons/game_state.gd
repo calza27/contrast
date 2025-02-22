@@ -2,7 +2,10 @@ extends Node
 
 signal colour_shift(color: int)
 
-var background_colour: Constants.Colour = Constants.Colour.WHITE
+var background_colour: Constants.Colour = Constants.Colour.WHITE:
+	set(c):
+		background_colour = c
+		colour_shift.emit(background_colour)
 
 func flip_color() -> void:
 	if background_colour == Constants.Colour.WHITE:

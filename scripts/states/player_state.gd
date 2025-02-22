@@ -22,7 +22,13 @@ func set_player(player: Player) -> void:
 	
 func get_player_velocity() -> Vector2:
 	return self._player.velocity
-	
+
+func get_player_direction_x() -> float:
+	var speed_x: float = self.get_player_velocity_x()
+	if speed_x == 0:
+		return 0
+	return (speed_x / abs(speed_x))
+
 func get_player_velocity_x() -> float:
 	return self._player.velocity.x
 	

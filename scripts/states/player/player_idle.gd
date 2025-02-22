@@ -1,8 +1,7 @@
 class_name PlayerIdle
 extends PlayerState
 
-const DECCELERATION = 0.5
-
+const DECCELERATION = 0.05
 func enter(previousState: State) -> void:
 	super.enter(previousState)
 
