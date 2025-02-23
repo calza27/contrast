@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvqsjwcuk3mpo"]
-
-[ext_resource type="Script" path="res://scripts/components/color_shift_component.gd" id="1_fff05"]
-
-[node name="ColorShiftComponent" type="Node"]
-script = ExtResource("1_fff05")

@@ -13,6 +13,6 @@ func enter(previousState: State) -> void:
 func physics_update(_delta: float) -> void:
 	self.set_player_velocity_y(self._player.JUMP_VELOCITY)
 	self.transition.emit(self, Type.FALL)
-	
+
 func get_type() -> Type:
 	return Type.JUMP

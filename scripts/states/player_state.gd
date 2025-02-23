@@ -15,7 +15,10 @@ func get_type() -> Type:
 	return Type.NONE
 
 func get_gravity_y() -> float:
-	return self._player.get_gravity().y
+	var multi: float = 1
+	if abs(self.get_player_velocity_y()) <= self._player.HANG_THRESHOLD:
+		multi = self._player.HANG_MULTI
+	return self._player.get_gravity().y * multi
 	
 func set_player(player: Player) -> void:
 	self._player = player

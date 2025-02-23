@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var _colour_rect: ColorRect = %ColourRect
 
 func _ready() -> void:
-	GameState.colour_shift.connect(self._on_colour_shift)
+	SignalBus.colour_shift.connect(self._on_colour_shift)
 	self._on_colour_shift(GameState.background_colour)
 	
 func _on_colour_shift(background_colour: int) -> void:

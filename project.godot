@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 Constants="*res://scripts/singletons/enums.gd"
 GameState="*res://scripts/singletons/game_state.gd"
 Utils="*res://scripts/singletons/utils.gd"
+SignalBus="*res://scripts/singletons/signal_bus.gd"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
 
 [dotnet]
 

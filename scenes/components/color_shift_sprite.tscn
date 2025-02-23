@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvqsjwcuk3mpo"]
+
+[ext_resource type="Material" uid="uid://m2mrnkt1um7v" path="res://shaders/color_shift_material.tres" id="1_vfu54"]
+[ext_resource type="Script" path="res://scripts/components/color_shift_sprite.gd" id="2_qedvl"]
+
+[node name="ColourShiftSprite" type="Sprite2D"]
+material = ExtResource("1_vfu54")
+script = ExtResource("2_qedvl")

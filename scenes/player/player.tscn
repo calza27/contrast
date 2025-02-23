@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://cobay4sn23xna"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_41s6o"]
-[ext_resource type="Texture2D" uid="uid://d2ygdy7uq22xg" path="res://assets/Player.png" id="1_d8loh"]
 [ext_resource type="Script" path="res://scripts/states/player_state_machine.gd" id="3_0c4qi"]
-[ext_resource type="PackedScene" uid="uid://dvqsjwcuk3mpo" path="res://scenes/components/color_shift_component.tscn" id="3_64f68"]
+[ext_resource type="Texture2D" uid="uid://bfhbnaa5h26am" path="res://assets/Player_colour.png" id="3_8j2cn"]
+[ext_resource type="PackedScene" uid="uid://dvqsjwcuk3mpo" path="res://scenes/components/color_shift_sprite.tscn" id="3_64f68"]
 [ext_resource type="Script" path="res://scripts/states/player/player_idle.gd" id="5_0xksg"]
 [ext_resource type="Script" path="res://scripts/states/player/player_fall.gd" id="6_62p7q"]
 [ext_resource type="Script" path="res://scripts/states/player/player_jump.gd" id="7_reovx"]
@@ -20,10 +20,6 @@ position = Vector2(0, -15)
 collision_mask = 9
 script = ExtResource("1_41s6o")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
-texture = ExtResource("1_d8loh")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dqlln")
 
@@ -39,9 +35,15 @@ position = Vector2(6, 15)
 target_position = Vector2(0, -30)
 collision_mask = 9
 
-[node name="ColorShiftComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_64f68")]
-sprite = NodePath("../Sprite2D")
+[node name="PlayerSprite" parent="." instance=ExtResource("3_64f68")]
+unique_name_in_owner = true
+position = Vector2(0, -1)
+texture = ExtResource("3_8j2cn")
 invert = true
+
+[node name="CameraMarker" type="Marker2D" parent="PlayerSprite"]
+unique_name_in_owner = true
+position = Vector2(5, 1)
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true

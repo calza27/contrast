@@ -5,15 +5,19 @@ extends CharacterBody2D
 @export var DASH_MULTI: float = 1.5
 @export var WALL_PUSH: float = 200
 @export var FALL_GLIDE_SPEED: float = 300
-@export var TERMINAL_VELOCITY: float = 500
-@export var JUMP_VELOCITY: float = -400
+@export var TERMINAL_VELOCITY: float = 600
+@export var JUMP_VELOCITY: float = -450
+@export var JUMP_CUT_MULTI: float = 0.5
+@export var HANG_THRESHOLD: float = 50
+@export var HANG_MULTI: float = 0.75
 
 @onready var ray_left: RayCast2D = %RayLeft
 @onready var ray_right: RayCast2D = %RayRight
+@onready var player_sprite: ColorShiftSprite = %PlayerSprite
 @onready var state_machine: PlayerStateMachine = %PlayerStateMachine
 
 func _ready() -> void:
-	GameState.colour_shift.connect(self._on_colour_shift)
+	SignalBus.colour_shift.connect(self._on_colour_shift)
 	self._on_colour_shift(GameState.background_colour)
 	self.state_machine.start(self)
 
@@ -27,6 +31,8 @@ func wall_collision(wall_normal_x: float) -> bool:
 	return true
 	
 func _physics_process(_delta: float) -> void:
+	if self.velocity.x != 0:
+		self.player_sprite.scale.x = (self.velocity.x / abs(self.velocity.x))
 	self.move_and_slide()
 
 func _on_colour_shift(color: Constants.Colour) -> void:
