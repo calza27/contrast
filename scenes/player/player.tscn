@@ -35,6 +35,42 @@ position = Vector2(6, 15)
 target_position = Vector2(0, -30)
 collision_mask = 9
 
+[node name="UpperOuterLeft" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3, -15)
+target_position = Vector2(0, -5)
+collision_mask = 9
+
+[node name="UpperInnerLeft" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, -15)
+target_position = Vector2(0, -5)
+collision_mask = 9
+
+[node name="UpperInnerRight" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, -15)
+target_position = Vector2(0, -5)
+collision_mask = 9
+
+[node name="UpperOuterRight" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(3, -15)
+target_position = Vector2(0, -5)
+collision_mask = 9
+
+[node name="LowerOuterRight" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(3, 15)
+target_position = Vector2(0, 5)
+collision_mask = 9
+
+[node name="LowerOuterLeft" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3, 15)
+target_position = Vector2(0, 5)
+collision_mask = 9
+
 [node name="PlayerSprite" parent="." instance=ExtResource("3_64f68")]
 unique_name_in_owner = true
 position = Vector2(0, -1)

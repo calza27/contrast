@@ -26,6 +26,7 @@ SignalBus="*res://scripts/singletons/signal_bus.gd"
 
 window/size/viewport_width=960
 window/size/viewport_height=540
+window/stretch/scale=1.5
 
 [dotnet]
 

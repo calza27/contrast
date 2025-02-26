@@ -23,9 +23,10 @@ func exit() -> void:
 	self.set_player_velocity_x(speed)
 
 func physics_update(delta: float) -> void:
-	self.timer -= delta
-	if self.timer <= 0:
-		self.transition.emit(self, Type.MOVE)
+	if self.timer > 0:
+		self.timer -= delta
+		if self.timer <= 0:
+			self.transition.emit(self, Type.MOVE)
 
 func input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
